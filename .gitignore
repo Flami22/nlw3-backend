@@ -1,2 +1,8 @@
 node_modules
-.env.local
+
+src/database/database.sqlite
+
+uploads/*
+!uploads/.gitkeep
+
+.env
