@@ -8,11 +8,19 @@ import errorHandler from './errors/handler'
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204,
+    "allowedHeaders": ["Content-Type"]
+  }
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(routes);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 app.use(errorHandler);
 
-
-app.listen(3000);
+const PORT = process.env.PORT || 5000 
+  
+app.listen(PORT);
